@@ -1,7 +1,7 @@
 from flask import Flask, jsonify, request
 from app.extensions import db
 from app.models import Movie
-from app.movie_controller import MovieController
+from app.controller import MovieController
 
 
 app = Flask(__name__)
@@ -9,9 +9,9 @@ app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///:memory:'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 db.init_app(app)
 
-# Initialize the MovieController
 movie_controller = MovieController()
-    
+
+# Run once at startup
 @app.before_request
 def create_tables():
     if not hasattr(app, 'has_run'):
