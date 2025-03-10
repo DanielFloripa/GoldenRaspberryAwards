@@ -41,13 +41,13 @@ class MovieController:
             Movie.producers,
             Movie.year.label('previous_win'),
             MovieAlias.year.label('following_win'),
-            func.abs(MovieAlias.year - Movie.year).label('interval')
+            (MovieAlias.year - Movie.year).label('interval')
         ).join(
             MovieAlias,
             (Movie.producers == MovieAlias.producers)
             & (Movie.winner == True)
             & (MovieAlias.winner == True)
-            & (MovieAlias.year != Movie.year)
+            & (MovieAlias.year > Movie.year)
         ).subquery()
         
         for key in ('min', 'max'):
