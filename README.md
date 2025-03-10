@@ -112,6 +112,8 @@ python -m unittest discover -s tests
 
 ## Dependencies
 
+The in-memory database used is SQLite, so require the instalation of sqlite sources [SQLite Download Page](https://www.sqlite.org/download.html).
+
 The project requires the following Python packages:
 
 - Flask
@@ -121,4 +123,4 @@ Make sure to install them using the `requirements.txt` file.
 
 ## License
 
-This project is licensed under the MIT License.
+This project is licensed under the GPL License.
