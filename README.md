@@ -52,16 +52,62 @@ Once the application is running, you can access the API endpoints:
   GET /movies
   ```
 
-- **Get a movie by title:**
+- **Get a movie by ID:**
   ```
-  GET /movies/<title>
+  GET /movies/<int:movie_id>
+  ```
+
+- **Get all nominees:**
+  ```
+  GET /nominees
+  ```
+
+- **Get all winners:**
+  ```
+  GET /winners
+  ```
+
+- **Get interval of awards:**
+  ```
+  GET /get_interval
+  ```
+
+- **Add a new movie:**
+  ```
+  POST /movies
+  ```
+  Example request body:
+  ```json
+  {
+    "year": 2021,
+    "title": "New Movie",
+    "studios": "New Studio",
+    "producers": "New Producer",
+    "winner": true
+  }
+  ```
+
+- **Update a movie by ID:**
+  ```
+  PATCH /movies/<int:movie_id>
+  ```
+  Example request body:
+  ```json
+  {
+    "title": "Updated Movie Title"
+  }
+  ```
+
+- **Delete a movie by ID:**
+  ```
+  DELETE /movies/<int:movie_id>
   ```
 
 ## Tests
 Integration tests is achieved by running:
 
 ```
-python -m unittest discover -s app tests
+python -m unittest discover -s tests
 ```
 
 ## Dependencies
