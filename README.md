@@ -110,6 +110,11 @@ Integration tests is achieved by running:
 python -m unittest discover -s tests
 ```
 
+## Note about tests:
+
+The expected results in documentation "FORMATO DA API" is not reached because `max.producer == "Producer 1"` has interval value equals to 109,
+based in years `{"previousWin": 1900 and "followingWin": 2009}`
+
 ## Dependencies
 
 The in-memory database used is SQLite, so require the instalation of sqlite sources [SQLite Download Page](https://www.sqlite.org/download.html).
