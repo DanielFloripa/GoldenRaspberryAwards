@@ -1,19 +1,20 @@
-# Python RESTful API for Movie Data
+# Python RESTful API for GoldenRaspberryAwards
 
 This project is a RESTful API built with Flask that reads movie data from a CSV file and populates an in-memory SQLite database. It provides endpoints to retrieve movie information.
 
 ## Project Structure
 
 ```
-python-rest-api
+GoldenRaspberryAwards
 ├── app
-│   ├── __init__.py
+│   ├── controller.py
 │   ├── main.py
 │   ├── models.py
-│   ├── routes.py
-│   └── utils.py
+│   └── extensions.py
 ├── data
 │   └── Movielist.csv
+├── tests
+│   └── test_app.py
 ├── requirements.txt
 └── README.md
 ```
@@ -23,7 +24,7 @@ python-rest-api
 1. **Clone the repository:**
    ```
    git clone <repository-url>
-   cd python-rest-api
+   cd GoldenRaspberryAwards
    ```
 
 2. **Create a virtual environment:**
@@ -39,7 +40,7 @@ python-rest-api
 
 4. **Run the application:**
    ```
-   python app/main.py
+   python -m app.main
    ```
 
 ## Usage
@@ -55,6 +56,13 @@ Once the application is running, you can access the API endpoints:
   ```
   GET /movies/<title>
   ```
+
+## Tests
+Integration tests is achieved by running:
+
+```
+python -m unittest discover -s app tests
+```
 
 ## Dependencies
 

@@ -17,6 +17,7 @@ class MovieAPITestCase(unittest.TestCase):
         with self.app.app_context():
             db.session.remove()
             db.drop_all()
+            db.session.close()
 
     def test_get_movies(self):
         response = self.client.get('/movies')
@@ -79,7 +80,11 @@ class MovieAPITestCase(unittest.TestCase):
         updated_movie = {
             "title": "Updated Movie Title"
         }
-        response = self.client.patch(f'/movies/{movie_id}', data=json.dumps(updated_movie), content_type='application/json')
+        response = self.client.patch(
+            '/movies/{}'.format(movie_id),
+            data=json.dumps(updated_movie),
+            content_type='application/json'
+        )
         self.assertEqual(response.status_code, 200)
         data = json.loads(response.data)
         self.assertEqual(data['title'], updated_movie['title'])
@@ -96,10 +101,10 @@ class MovieAPITestCase(unittest.TestCase):
         self.assertEqual(response.status_code, 201)
         movie_id = json.loads(response.data)['id']
 
-        response = self.client.delete(f'/movies/{movie_id}')
+        response = self.client.delete('/movies/{}'.format(movie_id))
         self.assertEqual(response.status_code, 204)
 
-        response = self.client.get(f'/movies/{movie_id}')
+        response = self.client.get('/movies/{}'.format(movie_id))
         self.assertEqual(response.status_code, 404)
 
 if __name__ == '__main__':

@@ -1,8 +1,8 @@
 from flask import Flask, jsonify, request
+
 from app.extensions import db
 from app.models import Movie
 from app.controller import MovieController
-
 
 app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///:memory:'

@@ -1,8 +1,10 @@
 import csv
 import os
 from sqlalchemy import Column, Integer, String, Boolean
-from app.extensions import db
 
+from app.extensions import db
+    
+    
 class Movie(db.Model):
     __tablename__ = 'movies'
 

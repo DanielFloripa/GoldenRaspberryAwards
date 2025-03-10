@@ -1,7 +1,8 @@
 from sqlalchemy import func
 from sqlalchemy.orm import aliased
 
-from app.models import Movie, db
+from app.models import Movie
+from app.extensions import db
 
 
 class MovieController:
